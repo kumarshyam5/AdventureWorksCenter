@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace AdventureWorksCenter.WebAPI
 {
@@ -13,6 +10,9 @@ namespace AdventureWorksCenter.WebAPI
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            DataAccess.Common.Mapper.MapConfig.Initialize();
+            UnityConfig.RegisterComponents();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
