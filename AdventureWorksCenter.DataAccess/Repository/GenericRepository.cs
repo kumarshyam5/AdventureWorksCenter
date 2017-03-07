@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdventureWorksCenter.DataAccess.DataModels;
+using System.Data.Entity;
 
 namespace AdventureWorksCenter.DataAccess.Repository
 {
-    class GenericRepository
+    public class GenericRepository<T> where T : class, IGenericInterface
     {
+        private AdventureWorksDbContext _context;
+        private DbSet<T> dbSet;
+
+        public GenericRepository()
+        {
+            _context = new AdventureWorksDbContext();
+            dbSet = _context.Set<T>();
+        }
+
     }
 }
